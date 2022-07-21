@@ -1,0 +1,49 @@
+<section>
+  <img (click)="OpenFileManager()" class="circle" matTooltip="Click Here For add Profile Image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/512px-Circle-icons-profile.svg.png">
+  <form>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" placeholder="FirstName">
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" placeholder="LastName">
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>Job Title</mat-label>
+      <input matInput type="text" placeholder="Ex. FrontEnd Developer">
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Ex. example@examplehost.exampledomain">
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>PhoneNumber</mat-label>
+      <input matInput type="tel" placeholder="Ex. 09053189598">
+    </mat-form-field>
+    <mat-form-field class="mat-from-field" appearance="fill">
+      <mat-label>Choose BirthDay</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" appearance="fill">
+      <mat-label>Marital Status</mat-label>
+      <mat-select [value]="0">
+        <mat-option [value]="0">Indeterminate</mat-option>
+        <mat-option [value]="1">Signle</mat-option>
+        <mat-option [value]="2">Married</mat-option>
+        <mat-option [value]="3">Divorced</mat-option>
+        <mat-option [value]="4">Widowed</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="mat-form-field">
+      <mat-slide-toggle color="primary">Own Any Child?</mat-slide-toggle>
+    </div>
+    <mat-form-field appearance="fill" class="mat-from-field">
+      <mat-label>Address</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+  </form>
+</section>

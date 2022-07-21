@@ -1,0 +1,39 @@
+<mat-sidenav-container class="container" >
+  <mat-sidenav mode="over" class="mat-side-nav" [opened]="sideNavOpenState">
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-toolbar">
+      <button mat-icon-button (click)="sideNavOpenState = !sideNavOpenState">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Resume</span>
+      <span class="empty-space"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>share</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item matTooltipPosition="left" (click)="OpenDialog('Telegram')" matTooltip="Share with Telegram">
+          <mat-icon>Telegram</mat-icon>
+          Telegram
+        </button>
+        <button mat-menu-item matTooltipPosition="left" (click)="OpenDialog('Whatsapp')" matTooltip="Share with Whatsapp">
+          <mat-icon>whatsapp</mat-icon>
+          Whatsapp
+        </button>
+
+        <button mat-menu-item matTooltipPosition="left" (click)="OpenDialog('Instagram')" matTooltip="Share with Instagram">
+          <mat-icon>Instagram</mat-icon>
+          Instagram
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-tab-group dynamicHeight mat-stretch-tabs class="mat-tab-group">
+      <mat-tab label="Personal Information">
+        <app-personalinfo></app-personalinfo>
+      </mat-tab>
+      <mat-tab label="Career Information">
+        <app-careerinfo></app-careerinfo>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav-content>
+</mat-sidenav-container>

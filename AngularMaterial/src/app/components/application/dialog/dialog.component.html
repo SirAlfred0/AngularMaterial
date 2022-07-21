@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  <p>Do You Really Want To Share Your Resume With {{ data }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="OnNoClick()">No, Thanks</button>
+  <button mat-button cdkFocusInitial (click)="OnNoClick()" >Ok</button>
+</mat-dialog-actions>

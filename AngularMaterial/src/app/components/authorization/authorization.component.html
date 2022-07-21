@@ -1,0 +1,20 @@
+<mat-stepper [linear]="true" #Stepper>
+
+  <mat-step label="Create Account" [stepControl]="createAccountStepController" [optional]="userAuthorizationChoice == 2">
+    <app-createacount (userAuthorizationChoiceEvent)="UserAuthorizationChoiceChange($event)" (LoginStepControllerEvent)="createAccountStepController = $event" (userAccountEvent)="OnNewCreateAccount($event,Stepper)"></app-createacount>
+  </mat-step>
+
+  <mat-step [stepControl]="loginStepController" [optional]="userAuthorizationChoice == 1" label="Login">
+    <app-login (LoginFormController)="loginStepController = $event" (NewUserLoginEvent)="OnNewLogin($event,Stepper)"></app-login>
+  </mat-step>
+
+  <mat-step [editable]="false" label="Initialize app">
+    <div class="initialize-section">
+        <div>
+          <mat-progress-spinner mode="determinate" [value]="spinnerValue"></mat-progress-spinner>
+          <h1>{{spinnerValue}}%</h1>
+        </div>
+        <mat-hint class="mat-hint">{{loginStage}}...</mat-hint>
+    </div>
+  </mat-step>
+</mat-stepper>

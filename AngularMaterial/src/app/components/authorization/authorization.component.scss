@@ -1,0 +1,26 @@
+.mat-hint
+{
+  margin: 5rem 0;
+}
+
+.initialize-section
+{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+.initialize-section > div
+{
+  position: relative;
+}
+
+.initialize-section > div > h1
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}

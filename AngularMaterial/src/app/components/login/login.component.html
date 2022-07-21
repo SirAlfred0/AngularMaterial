@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm">
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      UserName
+    </mat-label>
+    <input matInput formControlName="userName" type="text" placeholder="User Name">
+    <mat-error *ngIf="loginForm.controls.userName.hasError('required')">fill this.</mat-error>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      Password
+    </mat-label>
+    <input matInput formControlName="password" [type]="loginPasswordHiddenState ? 'password' : 'text'" placeholder="Password">
+    <button mat-icon-button matSuffix (click)="loginPasswordHiddenState = !loginPasswordHiddenState">
+      <mat-icon>{{loginPasswordHiddenState ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="loginForm.controls.password.hasError('required')">fill this.</mat-error>
+  </mat-form-field>
+</form>
+<button color="primary" mat-raised-button (click)="OnNewUserLogin()">Login</button>

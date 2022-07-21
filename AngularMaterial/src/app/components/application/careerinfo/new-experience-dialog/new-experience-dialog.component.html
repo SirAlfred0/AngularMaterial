@@ -1,0 +1,36 @@
+<h1 matDialogTitle>Fill This Form</h1>
+<mat-dialog-content>
+  <form [formGroup]="NewExController">
+    <mat-form-field appearance="fill">
+      <mat-label>
+          CompanyName
+      </mat-label>
+      <input matInput [(ngModel)]="data.CompanyName" formControlName="CompanyName" name="CompanyName" type="text" placeholder="Company Name...">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>
+        Job Title
+      </mat-label>
+      <input matInput [(ngModel)]="data.JobTitle" formControlName="JobTitle" name="JobTitle" type="text" placeholder="Job Title...">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Start</mat-label>
+      <input matInput [(ngModel)]="data.From" formControlName="Start" name="StartDate" [matDatepicker]="pickerStart">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="!data.StealEmployed">
+      <mat-label>Choose End</mat-label>
+      <input matInput [(ngModel)]="data.End" formControlName="End" name="EndDate" [matDatepicker]="pickerEnd">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <mat-checkbox [(ngModel)]="data.StealEmployed" name="StealEmployed">Steal Employed</mat-checkbox>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [disabled]="ExFormHasError()" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

@@ -1,0 +1,44 @@
+<form [formGroup]="createAccountForm">
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      FirstName
+    </mat-label>
+    <input matInput type="text" formControlName="firstName" placeholder="First Name" pattern="[a-zA-Z ]*">
+    <mat-error *ngIf="createAccountForm.controls.firstName.hasError('required')">fill this.</mat-error>
+    <mat-error *ngIf="!createAccountForm.controls.firstName.hasError('required') && createAccountForm.controls.firstName.hasError('pattern')">not valid first name</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      LastName
+    </mat-label>
+    <input matInput type="text" formControlName="lastName" placeholder="Last Name" pattern="[a-zA-Z ]*">
+    <mat-error *ngIf="createAccountForm.controls.lastName.hasError('required')">fill this.</mat-error>
+    <mat-error *ngIf="!createAccountForm.controls.lastName.hasError('required') && createAccountForm.controls.lastName.hasError('pattern')">not valid last name</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      UserName
+    </mat-label>
+    <input matInput type="text" formControlName="userName" placeholder="User Name">
+    <mat-error *ngIf="createAccountForm.controls.userName.hasError('required')">fill this.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field" appearance="fill">
+    <mat-label>
+      Password
+    </mat-label>
+    <input matInput formControlName="password" [type]="createAccountPasswordHiddenState ? 'password' : 'text'" placeholder="Password">
+    <button mat-icon-button matSuffix (click)="createAccountPasswordHiddenState = !createAccountPasswordHiddenState">
+      <mat-icon>{{createAccountPasswordHiddenState ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="createAccountForm.controls.password.hasError('required')">fill this.</mat-error>
+  </mat-form-field>
+</form>
+<mat-radio-group class="mat-radio-group" (change)="OnUserAuthorizationChoiceChange()" [(ngModel)]="userAuthorizationChoice" >
+  <mat-radio-button [value]="0" class="mat-radio" color="primary">None</mat-radio-button>
+  <mat-radio-button [value]="1" class="mat-radio" color="primary">Login with this account</mat-radio-button>
+  <mat-radio-button [value]="2" class="mat-radio" color="primary">I already own an account in this application</mat-radio-button>
+</mat-radio-group>
+<button color="primary" class="mat-raised-button" mat-raised-button (click)="OnNewUserSubmit()">{{userAuthorizationChoice == 2 ? 'Next Step' : userAuthorizationChoice == 1 ? 'Create Account And Login' : 'Create Account'}}</button>

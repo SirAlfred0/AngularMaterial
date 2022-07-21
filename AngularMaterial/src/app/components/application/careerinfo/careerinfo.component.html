@@ -1,0 +1,43 @@
+<mat-accordion>
+  <mat-expansion-panel class="mat-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Skills
+      </mat-panel-title>
+      <mat-panel-description>
+        You can add your skills in this Panel.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-skills [skills]="softwareSkills" [options]="softwareOptions" [placeHolder]="'software'"
+    (addEvent)="AddNewSoftware($event)" (removeEvent)="RemoveSoftware($event)" (selectEvent)="SelectedSoftware($event)"></app-skills>
+
+    <app-skills [skills]="frameworkSkills" [options]="frameworkOptions" [placeHolder]="'framework'"
+    (addEvent)="AddNewFramework($event)" (removeEvent)="RemoveFramework($event)" (selectEvent)="SelectedFramework($event)"></app-skills>
+
+    <app-skills [skills]="languageSkills" [options]="languageOptions" [placeHolder]="'language'"
+    (addEvent)="AddNewLanguage($event)" (removeEvent)="RemoveLanguage($event)" (selectEvent)="SelectedLanguage($event)"></app-skills>
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel class="mat-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Experience
+      </mat-panel-title>
+      <mat-panel-description>
+        You can add your Experience in this Panel.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-grid-list (window:resize)="OnResize($event)" [cols]="colsSize" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let item of experiences">
+        <app-experience [experience]="item" (RemoveExperienceEvent)="RemoveExperience($event)"></app-experience>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
+</mat-accordion>

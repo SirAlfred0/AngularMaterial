@@ -1,0 +1,25 @@
+.circle
+{
+  border-radius: 50%;
+  display: block;
+  width: 20%;
+  height: 60%;
+  margin: 3rem auto;
+}
+
+.mat-form-field
+{
+  display: inline-block;
+  width: 40%;
+  margin: 1rem;
+}
+
+form
+{
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: space-around;
+}
